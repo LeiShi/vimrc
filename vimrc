@@ -173,6 +173,11 @@ set nu
 highlight BadWhitespace ctermbg=darkgreen guibg=darkgreen
 au BufNewFile,BufRead *.py,*.pyw,*.c,*.h,*.F90
     \ match BadWhitespace /\s\+$/
+" Remove trailing whitespaces
+nnoremap tw<CR> :%s/\s\+$//e<CR>
+" Automatically delete trailing whitespaces when write
+" Be careful with this feature if trailing whitespaces are essential
+autocmd BufWritePre *.py,*.pyw,*.c,*.h %s/\s\+$//e
 " Python highlighting
 let python_highlight_all=1
 syntax on
